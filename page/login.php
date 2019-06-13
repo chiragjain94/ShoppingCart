@@ -3,6 +3,7 @@ require_once "../init.php";
 require_once "../classes/User.php";
 
 $ret = [];
+
 if (isset($_POST["submit"])) {
   $email = htmlspecialchars($_POST['email']);
   $password = htmlspecialchars($_POST['password']);
@@ -20,8 +21,19 @@ if (isset($_POST["submit"])) {
       $twig = View::getTwig();
       $userDetails = $user->getUser();
       $isLoggedIn = true;
+
+      if ($user->isAdmin()) {
+        $isAdmin = true;
+        $twig->addGlobal("isAdmin", $isAdmin);
+        $_SESSION['isAdmin'] = $isAdmin;
+        header("Location: /shoppingCart/admin/");
+        exit;
+      }
+
+      $_SESSION['isAdmin'] = false;
       $twig->addGlobal("isLoggedIn", $isLoggedIn);
       $twig->addGlobal("userDetails", $userDetails);
+
       echo $twig->render('index.twig', array('heading' => 'Home Page'));
       exit;
     }

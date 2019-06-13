@@ -1,0 +1,36 @@
+{% extends 'partials/base.twig' %}
+
+{% block content %}
+  <h1>Edit Product</h1>
+  <form action="editProduct.php" enctype="multipart/form-data" method="POST">
+    <input type="text" hidden name="id" value="{{ product.id}}">
+
+    <div class="form-group">
+      <label>Name</label>
+      <input type="text" class="form-control" name="name" value="{{ product.name }}" required>
+    </div>
+
+    <div class="form-group">
+      <label>Description</label>
+      <input type="textarea" class="form-control" name="description" value="{{ product.description }}" required>
+    </div>
+    <div class="form-group">
+      <label>Category</label>
+      <input type="text" class="form-control" name="category" value="{{ product.category }}" required>
+    </div>
+    <div class="form-group">
+      <label>Price</label>
+      <input type="text" class="form-control" name="price" value="{{ product.price }}" required>
+    </div>
+    <div class="form-group">
+      <label>Image</label>
+      <input accept=".jpeg, .jpg, .png" class="form-control" name="image" required type="file" value="../../img/{{ product.image }}">
+    </div>
+    <div class="form-group">
+      <label>Image text</label>
+      <input type="text" class="form-control" name="imageText" value="{{ product.imagetext }}" required>
+    </div>
+    <input class="btn btn-success" name="submit" type="submit">
+  </form>
+
+{% endblock %}

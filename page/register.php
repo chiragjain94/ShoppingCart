@@ -1,7 +1,6 @@
 <?php
 require_once "../init.php";
 require_once "../classes/User.php";
-$twig = View::getTwig();
 
 $message = "";
 $messageCss = "";

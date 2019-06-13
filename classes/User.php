@@ -56,4 +56,23 @@ class User
     }
     throw new Exception("User not found.");
   }
+
+  public function isAdmin()
+  {
+    if (!isset($_SESSION['email'])) {
+      throw new Exception("User not logged in.");
+    }
+    $sql = 'SELECT * FROM users WHERE email = ?';
+    $stmt = $this->database->executeSql($sql, [$_SESSION['email']]);
+
+    $count = $stmt->rowcount();
+    if ($count > 0) {
+      self::$user = $stmt->fetch();
+      $email = self::$user['email'];
+      if ($email == "admin@gmail.com") {
+        return true;
+      }
+    }
+    return false;
+  }
 }
