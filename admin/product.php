@@ -3,7 +3,6 @@ require_once "init.php";
 require_once "../classes/Product.php";
 
 if (isset($_POST['delete'])) {
-  // Get form data
   $id =  $_POST['delete_id'];
   $product = new Product;
   $product->deleteProduct($id);

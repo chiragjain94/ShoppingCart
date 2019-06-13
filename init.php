@@ -16,9 +16,5 @@ if (isset($_SESSION['email'])) {
   $isLoggedIn = true;
   $twig->addGlobal("isLoggedIn", $isLoggedIn);
 
-  // $isAdmin = $user->isAdmin();
-  // echo "The value is $isAdmin";
-  // $twig->addGlobal("isAdmin", $isAdmin);
-
   $twig->addGlobal("userDetails", $userDetails);
 }

@@ -1,4 +1,5 @@
-<?php require_once "init.php";
+<?php
+require_once "init.php";
 require_once "../classes/Product.php";
 
 if (isset($_POST["submit"])) {

@@ -1,11 +1,13 @@
-{% extends './partials/base.twig' %}
+{% extends './models/base.twig' %}
 {% block content %}
   Welcome to admin session.
   <h1>Products</h1>
   <div class="row">
+
     {% for product in products %}
       <div class="col-md-4 py-4 card">
         <img class="card-img-top" height="200" src="../img/{{ product.image }}" width="200">
+
         <div class="card-body">
           <h3>{{ product.name }}</h2>
           <h5 class="pt-2">{{ product.description }}</h5>
@@ -15,6 +17,7 @@
             More Details</a><br>
         </div>
       </div>
+
     {% endfor %}
   </div>
 {% endblock %}
