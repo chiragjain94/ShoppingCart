@@ -51,7 +51,11 @@ class User
 
     $count = $stmt->rowcount();
     if ($count > 0) {
-      self::$user = $stmt->fetch();
+      $userDetail = $stmt->fetch();
+      self::$user = array(
+        'name' => $userDetail['name'],
+        'email' => $userDetail['email'],
+      );
       return self::$user;
     }
     throw new Exception("User not found.");
@@ -67,7 +71,11 @@ class User
 
     $count = $stmt->rowcount();
     if ($count > 0) {
-      self::$user = $stmt->fetch();
+      $userDetail = $stmt->fetch();
+      self::$user = array(
+        'name' => $userDetail['name'],
+        'email' => $userDetail['email'],
+      );
       $email = self::$user['email'];
       if ($email == "admin@gmail.com") {
         return true;
