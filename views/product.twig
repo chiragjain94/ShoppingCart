@@ -1,0 +1,32 @@
+{% extends 'models/base.twig' %}
+{% block content %}
+
+  <div class="col-md-12 py-4">
+    <div class="form-control">
+      <label>Name</label>
+      <h3>{{ product.name }}</h2>
+    </div>
+
+    <div class="form-control">
+      <label>Image</label><br>
+      <img class="img-fluid pt-2" height="200" src="../img/{{ product.image }}" width="200">
+    </div>
+
+    <div class="form-control">
+      <label>Description</label>
+      <h5 class="pt-2">{{ product.description }}</h5>
+    </div>
+
+    <div class="form-control">
+      <label>Price</label>
+      <h5 class="pt-2">Rs.
+        {{ product.price }}/-</h5>
+    </div>
+
+    {# <form action="" class="py-2" method="POST">
+          <input type="hidden" name="addToCartId" value="{{ product.id }}">
+          <input class="btn btn-success" name="addToCart" type="submit" value="Add to cart">
+        </form> #}
+
+  </div>
+{% endblock %}

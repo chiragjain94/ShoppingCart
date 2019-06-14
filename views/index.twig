@@ -1,5 +1,36 @@
 {% extends 'models/base.twig' %}
 {% block content %}
   <h1>{{ heading }}</h1>
+  <h1>Products</h1>
+  <div class="row">
 
+    {% for product in products %}
+
+      <div class="col-md-4 py-4 card">
+        <img class="card-img-top" height="200" src="img/{{ product.image }}" width="200">
+
+        <div class="card-body">
+          <h3>{{ product.name }}</h2>
+          <h5 class="pt-2">{{ product.description }}</h5>
+          <h5 class="pt-2">Rs.
+            {{ product.price }}/-</h5>
+          <a href="page/product.php?id= {{ product.id }}">
+            More Details</a><br>
+        </div>
+      </div>
+
+
+    {% endfor %}
+  </div>
+  <div class="popup" onclick="myFunction()">Click me to toggle the popup!
+    <span class="popuptext" id="myPopup">A Simple Popup!</span>
+  </div>
+
+  <script>
+    // When the user clicks on div, open the popup
+    function myFunction() {
+      var popup = document.getElementById("myPopup");
+      popup.classList.toggle("show");
+    }
+  </script>
 {% endblock %}
