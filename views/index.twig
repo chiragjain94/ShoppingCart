@@ -1,9 +1,8 @@
 {% extends 'models/base.twig' %}
 {% block content %}
-  <h1>{{ heading }}</h1>
   <h1>Products</h1>
+  <h4 class=" alert-success" id="cart-message"></h4>
   <div class="row">
-
     {% for product in products %}
 
       <div class="col-md-4 py-4 card">
@@ -11,26 +10,39 @@
 
         <div class="card-body">
           <h3>{{ product.name }}</h2>
-          <h5 class="pt-2">{{ product.description }}</h5>
           <h5 class="pt-2">Rs.
             {{ product.price }}/-</h5>
-          <a href="page/product.php?id= {{ product.id }}">
-            More Details</a><br>
+        </div>
+
+        <button class="btn btn-info btn-lg" data-target="#productModal{{ product.id}}" data-toggle="modal" type="button">More Details</button>
+
+        <div class="modal fade" id="productModal{{ product.id}}" role="dialog">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content p-3">
+              <h4>{{ product.name }}</h4>
+              <img height="200" src="img/{{ product.image }}" width="250"></br>
+            <p>{{ product.description}}</p>
+            <h6>Rs.{{product.price}}/-</h6>
+
+            <div class="form-group w-25">
+              <label for="quantity">Select Quantity:</label>
+              <select class="form-control" id="quantity">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
+            </div>
+
+            <div class="modal-footer p-0 pt-1 border-0">
+              <button class="btn btn-success add_to_cart" data-dismiss="modal" product_price="{{product.price}}" product_id="{{product.id}}" type="button">Add to Cart</button>
+              <button class="btn btn-danger" data-dismiss="modal" type="button">Close</button>
+            </div>
+          </div>
+
         </div>
       </div>
-
-
-    {% endfor %}
-  </div>
-  <div class="popup" onclick="myFunction()">Click me to toggle the popup!
-    <span class="popuptext" id="myPopup">A Simple Popup!</span>
-  </div>
-
-  <script>
-    // When the user clicks on div, open the popup
-    function myFunction() {
-      var popup = document.getElementById("myPopup");
-      popup.classList.toggle("show");
-    }
-  </script>
-{% endblock %}
+    </div>
+  {% endfor %}
+</div>{% endblock %}

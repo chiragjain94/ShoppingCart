@@ -33,9 +33,9 @@ if (isset($_POST["submit"])) {
       $_SESSION['isAdmin'] = false;
       $twig->addGlobal("isLoggedIn", $isLoggedIn);
       $twig->addGlobal("userDetails", $userDetails);
-
-      echo $twig->render('index.twig', array('heading' => 'Home Page'));
+      header("Location: /shoppingCart/");
       exit;
+      // echo $twig->render('index.twig', array('heading' => 'Home Page'));
     }
   } else {
     $message = "Enter valid email id";
