@@ -3,6 +3,7 @@ import "bootstrap";
 import "../styles/app.scss";
 
 $(document).ready(function() {
+  //Function called when we add an item to cart and the cart badge is updated.
   $(".add_to_cart").click(function(event) {
     event.preventDefault();
     var $id = $(this).attr("product_id");
@@ -34,6 +35,7 @@ $(document).ready(function() {
     });
   });
 
+  //Function called when cart details are viewed.
   $("#cart-details").click(function(event) {
     event.preventDefault();
     var url = $(this).attr("href");
@@ -47,6 +49,7 @@ $(document).ready(function() {
     });
   });
 
+  //Function to slide up the dropdown when clicked somewhere else on screen.
   $(document).on("click", function(event) {
     event.preventDefault();
     var $trigger = $("#cart-content-wrapper");
@@ -55,6 +58,7 @@ $(document).ready(function() {
     }
   });
 
+  //Function to delete an item from cart.
   $(document).on("click", ".delete-item", function(event) {
     event.preventDefault();
     var $id = $(this).attr("product_id");
@@ -64,15 +68,15 @@ $(document).ready(function() {
       url: "page/deleteFromCart.php",
       data: {
         id: $id
-      }
-    });
-
-    $.ajax({
-      type: "POST",
-      url: "page/api/cart.php",
+      },
       success: function(response) {
         $("#cart-content-wrapper").html(response);
-        $("#cart-content-wrapper").slideDown("slow");
+
+        var $cartCount = $("#cart-count").html();
+        $cartCount--;
+        if ($cartCount == 0) {
+          $("#cart-count").html("");
+        } else $("#cart-count").html($cartCount);
       }
     });
   });
