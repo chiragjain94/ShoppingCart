@@ -7,14 +7,13 @@
     <meta content="ie=edge" http-equiv="X-UA-Compatible">
     <title>Bombayworks Shopping Cart</title>
     <link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" rel="stylesheet">
-    <script crossorigin="anonymous" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-    <script crossorigin="anonymous" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script crossorigin="anonymous" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script crossorigin="anonymous" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script crossorigin="anonymous" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script crossorigin="anonymous" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="./dist/main.js"></script>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-info">
       <a class="navbar-brand" href="/shoppingcart">Login Demo</a>
       <button aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbarNav" data-toggle="collapse" type="button">
         <span class="navbar-toggler-icon"></span>
@@ -44,33 +43,17 @@
                 {{  "Welcome,"  }}
                 {{ userDetails.name }}</span>
             </li>
-            <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1
-                <span class="caret"></span>
-              </a>
-              <ul class="dropdown-menu">
-                <li>
-                  <a href="#">Page 1-1</a>
-                </li>
-                <li>
-                  <a href="#">Page 1-2</a>
-                </li>
-                <li>
-                  <a href="#">Page 1-3</a>
-                </li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/shoppingcart/page/cart.php">
+
+            <li class="nav-item position-relative">
+              <a class="nav-link" href="/shoppingcart/api/cart.php" id="cart-details">
                 Cart
-                <span class="badge badge-dark" id="cart-count"></span>
+                <span class="badge badge-dark" id="cart-count">{{ cartCount }}</span>
               </a>
+              <div class="position-absolute bg-info" id="cart-content-wrapper"></div>
             </li>
           </ul>
         {% endif %}
       </div>
-    </nav>
+    </head>
   </head>
-
-  <body>
-    <div class="container">
+</html></nav></head><body><div class="container">

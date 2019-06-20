@@ -6,3 +6,10 @@ body {
 .popuptext {
   background-color: aqua;
 }
+
+#cart-content-wrapper {
+  z-index: 100;
+  width: 700%;
+  background: url(../img/loader.gif);
+  display: none;
+}
