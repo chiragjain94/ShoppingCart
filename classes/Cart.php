@@ -56,24 +56,17 @@ class Cart
 
   public function deleteItemFromCart($id)
   {
-    echo $id;
-    echo "main id";
     if (isset($_SESSION['cart'])) {
       $cart = $_SESSION['cart'];
 
-      foreach ($cart as $item) {
-        print_r($item);
-        foreach ($item as $i) {
-          print_r($i);
+      foreach ($cart as $a => $item) {
+
+        if ($item['id'] == $id) {
+          unset($cart[$a]);
         }
-        // if ($item['id'] == $id) {
-        //   $cart = array_diff($cart, array($item['id']));
-        // }
       }
     }
 
-
-    die();
     $_SESSION['cart'] = $cart;
   }
 }

@@ -66,5 +66,14 @@ $(document).ready(function() {
         id: $id
       }
     });
+
+    $.ajax({
+      type: "POST",
+      url: "page/api/cart.php",
+      success: function(response) {
+        $("#cart-content-wrapper").html(response);
+        $("#cart-content-wrapper").slideDown("slow");
+      }
+    });
   });
 });

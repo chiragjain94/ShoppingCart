@@ -17,6 +17,9 @@ if (isset($_SESSION['email'])) {
     $twig->addGlobal("cart", $cart);
 
     $cartCount = count($cart);
+    if ($cartCount == 0) {
+      $cartCount = "";
+    }
     $twig->addGlobal("cartCount", $cartCount);
   }
 
