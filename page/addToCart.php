@@ -10,6 +10,6 @@ if (isset($_REQUEST['id']) && (isset($_SESSION['email']))) {
 
   echo (json_encode(array('type' => 'success', 'cartCount' => $itemsInCart)));
 } else {
-  echo (json_encode(array('type' => 'fail', 'errorMessage' => 'error')));
+  echo (json_encode(array('type' => 'fail', 'errorMessage' => 'Please login first to access cart functionality.')));
 }
 exit;

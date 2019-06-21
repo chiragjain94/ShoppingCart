@@ -1,43 +1,47 @@
 <div class="cart-data">
-  <div class="row p-0 py-2 m-0 bg-info cart-data">
-    <div class="col-md-3">
-      <h6>Name</h5>
+  <div>
+    <div class="row p-0 py-2 m-0 bg-info cart-data">
+      <div class="col-md-3">
+        <h6>Name</h5>
+      </div>
+      <div class="col-md-3">
+        <h6>Quantity</h5>
+      </div>
+      <div class="col-md-3">
+        <h6>Price</h5>
+      </div>
+      <div class="col-md-3"></div>
     </div>
-    <div class="col-md-3">
-      <h6>Quantity</h5>
-    </div>
-    <div class="col-md-3">
-      <h6>Price</h5>
-    </div>
-    <div class="col-md-3"></div>
-  </div>
 
-  {% for item in cart %}
+    {% for item in cart %}
+      <div class="row p-0 py-2 m-0 bg-info">
+        <div class="col-md-3">
+          <p>{{ item.name }}</p>
+        </div>
+        <div class="col-md-3 form-group">
+          <input type="text" min="1" max="5" id="test" value="{{item.quantity}}" product_id="{{item.id}}" class="form-control product-quantity" required>
+        </div>
+        <div class="col-md-3">
+          <p>Rs.
+            {{ item.price * item.quantity }}
+            /-</p>
+        </div>
+        <div class="col-md-3">
+          <button class="delete-item btn-danger" product_id={{item.id}}>Delete</button>
+        </div>
+      </div>
+    {% endfor %}
+
     <div class="row p-0 py-2 m-0 bg-info">
-      <div class="col-md-3">
-        <p>{{ item.name }}</p>
-      </div>
-      <div class="col-md-3">
-        <p>{{ item.quantity }}</p>
-      </div>
-      <div class="col-md-3">
-        <p>Rs.
-          {{ item.price * item.quantity }}
-          /-</p>
-      </div>
-      <div class="col-md-3">
-        <button class="delete-item btn-danger" product_id={{item.id}}>Delete</button>
-      </div>
+      <div class="col-md-6 font-weight-bold">Final Amount</div>
+      <div class="col-md-6 font-weight-bold">Rs.
+        {{ cartTotal }}
+        /-</div>
     </div>
-  {% endfor %}
 
-  <div class="row p-0 py-2 m-0 bg-info">
-    <div class="col-md-6 font-weight-bold">Final Amount</div>
-    <div class="col-md-6 font-weight-bold">Rs.
-      {{ cartTotal }}
-      /-</div>
+    <div class="row m-0 p-2 bg-info">
+      <input class="btn btn-light" value="Checkout"></div>
   </div>
 
-  <div class="row m-0 p-2 bg-info">
-    <input class="btn btn-light" value="Checkout"></div>
+  <p class="cart-error"></p>
 </div>

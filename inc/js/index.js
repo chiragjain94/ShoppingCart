@@ -3,6 +3,7 @@ import "bootstrap";
 import "../styles/app.scss";
 
 $(document).ready(function() {
+  var $navbar = $("#navbarNav");
   //Function called when we add an item to cart and the cart badge is updated.
   $(".add_to_cart").click(function(event) {
     event.preventDefault();
@@ -59,7 +60,7 @@ $(document).ready(function() {
   });
 
   //Function to delete an item from cart.
-  $(document).on("click", ".delete-item", function(event) {
+  $navbar.on("click", ".delete-item", function(event) {
     event.preventDefault();
     var $id = $(this).attr("product_id");
 
@@ -79,5 +80,15 @@ $(document).ready(function() {
         } else $("#cart-count").html($cartCount);
       }
     });
+  });
+
+  //Function to limit cart quantity between 1 & 5
+  $navbar.on("input", ".product-quantity", function(event) {
+    var val = $(this).val();
+    if (val < 6 && val > 0) {
+      $(".cart-error").text("");
+    } else {
+      $(".cart-error").text("value must be between 1 and 5");
+    }
   });
 });
