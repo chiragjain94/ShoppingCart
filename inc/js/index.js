@@ -4,6 +4,7 @@ import "../styles/app.scss";
 
 $(document).ready(function() {
   var $navbar = $("#navbarNav");
+
   //Function called when we add an item to cart and the cart badge is updated.
   $(".add_to_cart").click(function(event) {
     event.preventDefault();
@@ -52,7 +53,6 @@ $(document).ready(function() {
 
   //Function to slide up the dropdown when clicked somewhere else on screen.
   $(document).on("click", function(event) {
-    event.preventDefault();
     var $trigger = $("#cart-content-wrapper");
     if ($trigger !== event.target && !$trigger.has(event.target).length) {
       $(".cart-data").slideUp("fast");
@@ -85,7 +85,6 @@ $(document).ready(function() {
   //Function to limit cart quantity between 1 & 5
   $navbar.on("input", ".product-quantity", function(event) {
     var currentQuantity = $(this).val();
-    // console.log(productTotal);
 
     if (currentQuantity < 6 && currentQuantity > 0) {
       $(".cart-error").text("");
@@ -103,10 +102,8 @@ $(document).ready(function() {
       var productTotal = 0;
 
       $(".product-price").each(function() {
-        // console.log($(this).text());
         productTotal += parseInt($(this).text());
       });
-      console.log(productTotal);
       $(mainDiv)
         .parent()
         .find(".product-total")

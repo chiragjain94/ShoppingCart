@@ -1,13 +1,3 @@
-// const path = require("path");
-// module.exports = {
-//   entry: "./inc/js/index.js",
-//   mode: "development",
-
-//   output: {
-//     filename: "main.js",
-//     path: path.resolve(__dirname, "dist")
-//   }
-// };
 const path = require("path");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
