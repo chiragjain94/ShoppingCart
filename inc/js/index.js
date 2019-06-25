@@ -84,11 +84,36 @@ $(document).ready(function() {
 
   //Function to limit cart quantity between 1 & 5
   $navbar.on("input", ".product-quantity", function(event) {
-    var val = $(this).val();
-    if (val < 6 && val > 0) {
+    var currentQuantity = $(this).val();
+    // console.log(productTotal);
+
+    if (currentQuantity < 6 && currentQuantity > 0) {
       $(".cart-error").text("");
+      $(".cart-error").removeClass("alert alert-danger");
+
+      var unitPrice = $(this).attr("product_price");
+      var mainDiv = $(this)
+        .parent()
+        .parent();
+
+      $(mainDiv)
+        .find(".product-price")
+        .html(currentQuantity * unitPrice);
+
+      var productTotal = 0;
+
+      $(".product-price").each(function() {
+        // console.log($(this).text());
+        productTotal += parseInt($(this).text());
+      });
+      console.log(productTotal);
+      $(mainDiv)
+        .parent()
+        .find(".product-total")
+        .html(productTotal);
     } else {
-      $(".cart-error").text("value must be between 1 and 5");
+      $(".cart-error").addClass("alert alert-danger");
+      $(".cart-error").text("**Quantity must be between 1 and 5");
     }
   });
 });

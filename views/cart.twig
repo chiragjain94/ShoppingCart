@@ -19,12 +19,12 @@
           <p>{{ item.name }}</p>
         </div>
         <div class="col-md-3 form-group">
-          <input type="text" min="1" max="5" id="test" value="{{item.quantity}}" product_id="{{item.id}}" class="form-control product-quantity" required>
+          <input type="text" min="1" max="5" value="{{item.quantity}}" product_id="{{item.id}}" product_price="{{item.price}}" class="form-control product-quantity" required>
         </div>
-        <div class="col-md-3">
-          <p>Rs.
-            {{ item.price * item.quantity }}
-            /-</p>
+        <div class="col-md-3 d-inline-flex">
+          <p>Rs&nbsp</p>
+          <p class="product-price">{{ item.price * item.quantity }}</p>
+          <p>/-</p>
         </div>
         <div class="col-md-3">
           <button class="delete-item btn-danger" product_id={{item.id}}>Delete</button>
@@ -34,14 +34,17 @@
 
     <div class="row p-0 py-2 m-0 bg-info">
       <div class="col-md-6 font-weight-bold">Final Amount</div>
-      <div class="col-md-6 font-weight-bold">Rs.
-        {{ cartTotal }}
-        /-</div>
+      <div class="col-md-6 font-weight-bold d-inline-flex">
+        <p>Rs&nbsp</p>
+        <p class="product-total">
+          {{ cartTotal }}</p>
+        <p>/-</p>
+      </div>
     </div>
 
     <div class="row m-0 p-2 bg-info">
       <input class="btn btn-light" value="Checkout"></div>
   </div>
 
-  <p class="cart-error"></p>
+  <p class="cart-error p-2"></p>
 </div>
