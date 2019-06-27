@@ -1,7 +1,7 @@
 {% extends 'models/base.twig' %}
 {% block content %}
   <h2>Register</h2>
-  <h4 class="alert p-0 d-none {{ messageCss }}">{{ message }}</h4>
+  <h4 class="p-0 d-none {{ response.success  ? 'd-block alert-success' : 'd-block alert-danger'}}">{{ response.message }}</h4>
 
   <form action="register.php" method="POST">
     <div class="form-group">

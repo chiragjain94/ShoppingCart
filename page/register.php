@@ -19,20 +19,26 @@ if (isset($_POST["submit"])) {
       if ($password == $password2) {
         $passwordEncrypt = md5($email . $password);
         $user->register($name, $email, $passwordEncrypt);
-        $message = "User Added";
-        $messageCss = "d-block alert-success";
+        $response = array ('success' => true, 'message'=> "User Added" );
+        // $message = "User Added";
+        // $messageCss = "d-block alert-success";
         $name = $email = $password = $password2 = "";
       } else {
-        $message = "Password doesn't match";
-        $messageCss = "d-block alert-danger";
+        $response = array ('success' => false, 'message'=> "Passowrd doesn't match" );
+        // $message = "Password doesn't match";
+        // $messageCss = "d-block alert-danger";
       }
     } else {
-      $message = "User already exists";
-      $messageCss = "d-block alert-danger";
+      $response = array ('success' => false, 'message'=> "User already exists" );
+
+      // $message = "User already exists";
+      // $messageCss = "d-block alert-danger";
     }
   } else {
-    $message = "Email id is not correct";
-    $messageCss = "d-block alert-danger";
+    $response = array ('success' => false, 'message'=> "Email id is not correct" );
+    
+    // $message = "Email id is not correct";
+    // $messageCss = "d-block alert-danger";
   }
 
   $ret = array(
@@ -40,8 +46,9 @@ if (isset($_POST["submit"])) {
     'email' => $email,
     'password' => $password,
     'password2' => $password2,
-    'message' => $message,
-    'messageCss' => $messageCss
+    'response' => $response
+    // 'message' => $message,
+    // 'messageCss' => $messageCss
   );
 }
 echo $twig->render('register.twig', $ret);

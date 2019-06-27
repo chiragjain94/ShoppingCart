@@ -9,7 +9,7 @@ if (isset($_POST['delete'])) {
   $productsDetails = $product->getAllProducts();
 
   echo $twig->render('index.twig', ['isAdmin' => true, 'products' => $productsDetails]);
-  exit;
+  exit();
 }
 
 if (isset($_GET['id'])) {

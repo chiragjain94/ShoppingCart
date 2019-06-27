@@ -1,5 +1,6 @@
 <?php
 require_once ROOT_URL . '/config/config.php';
+
 class Database
 {
   private static $instance;

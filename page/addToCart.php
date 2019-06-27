@@ -12,4 +12,4 @@ if (isset($_REQUEST['id']) && (isset($_SESSION['email']))) {
 } else {
   echo (json_encode(array('type' => 'fail', 'errorMessage' => 'Please login first to access cart functionality.')));
 }
-exit;
+exit();

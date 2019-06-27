@@ -16,7 +16,7 @@ if (isset($_SESSION['cart'])) {
       'cartQuantity' => $cartQuantity,
       'cartTotal' => $cartTotal
     ));
-    exit;
+    exit();
   }
 } ?>
 <div class="cart-content-wrapper bg-info row p-o m-0">

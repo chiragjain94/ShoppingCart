@@ -14,8 +14,7 @@ if (isset($_POST["submit"])) {
     $userEmail = $user->login($email, $passwordEncrypt);
 
     if (!$userEmail) {
-      $message = "User not found";
-      $messageCss = "d-block alert-danger";
+      $response = array('success' => false,'key'=>"value",'message' => "User not found");
     } else {
       $_SESSION['email'] = $userEmail;
       $twig = View::getTwig();
@@ -35,18 +34,15 @@ if (isset($_POST["submit"])) {
       $twig->addGlobal("userDetails", $userDetails);
       header("Location: /shoppingCart/");
       exit;
-      // echo $twig->render('index.twig', array('heading' => 'Home Page'));
     }
   } else {
-    $message = "Enter valid email id";
-    $messageCss = "d-block alert-danger";
+    $response = array('success' => false, 'message' => "Enter valid email id");
   };
 
-  $ret = array(
+  $ret = array (
     'email' => $email,
     'password' => $password,
-    'message' => $message,
-    'messageCss' => $messageCss
+    'response' =>$response,
   );
 }
 echo $twig->render('login.twig', $ret);

@@ -18,7 +18,7 @@ if (isset($_POST["submit"])) {
 
   $productDetail = $product->getProduct($productId);
   echo $twig->render('product.twig', ['isAdmin' => true, 'product' => $productDetail]);
-  exit;
+  exit();
 }
 
 if (isset($_GET['id'])) {
@@ -26,5 +26,5 @@ if (isset($_GET['id'])) {
   $product = new Product;
   $productDetail = $product->getProduct($id);
   echo $twig->render('editProduct.twig', array('isAdmin' => true, 'product' => $productDetail));
-  exit;
+  exit();
 }

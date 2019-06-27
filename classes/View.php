@@ -1,6 +1,5 @@
 <?php
 
-
 class View
 {
   private static $instance;
